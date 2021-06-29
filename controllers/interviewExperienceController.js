@@ -459,7 +459,7 @@ router.get('/getExperience/:experienceId', authenticate, async (req, res, next) 
             "commentBy": user.userName,
             "commentByUser_id": user._id,
             "commentCreatedAt": comment.commentCreatedAt,
-            "profileImage": profileImage.filename
+            "profileImage": profileImage && profileImage.filename ? profileImage.filename : ''
         }
     }))
     experienceDetails.comments = comments.reverse();
