@@ -71,7 +71,7 @@ function CommentBox({ comments, experienceId }) {
                                 <ListItem key={index}>
                                     <ListItemAvatar>
                                         <Avatar
-                                            alt="Ellypse Perry"
+                                            alt={comment.commentBy}
                                             src={`/experience/file/${comment.CommentByProfileImage}`}
                                         />
                                     </ListItemAvatar>

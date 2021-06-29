@@ -71,7 +71,7 @@ function InterviewCorner({ getAllCompanies, companies, userId }) {
                         return (
                             spamFlag === false &&
                             <Grid key={index} item lg={2} md={2} sm={3} xs={6} >
-                                <Fade in timeout={1000} >
+                                <Fade in timeout={300} >
                                     <Card elevation={0} className={classes.cardItem}>
                                         <CardContent >
                                             <Box>

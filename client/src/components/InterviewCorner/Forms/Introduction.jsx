@@ -22,7 +22,7 @@ export default function Introduction(props) {
             label={passoutYear.label}
             format="yyyy"
             views={['year']}
-            minDate={new Date()}
+            minDate={new Date('1990/12/31')}
             maxDate={new Date('2050/12/31')}
             fullWidth
           />
