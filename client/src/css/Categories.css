@@ -1,0 +1,42 @@
+/* card header styling */
+.MuiCardHeader-root {
+  background-color: #faf8f8;
+}
+
+#simple-menu {
+  margin: 30px 70px 0 0 !important;
+}
+
+.sendicon:hover {
+  color: #0eaa49 !important;
+  background-color: white !important;
+}
+
+.followers_length {
+  color: rgb(136, 134, 134) !important;
+  font-size: 20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* my_followed_categories */
+
+.upper_category_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center !important;
+  padding-bottom: 20px;
+}
+
+.MuiNativeSelect-root {
+  padding: 10px 40px !important;
+}
+.MuiNativeSelect-select {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.MuiCircularProgress-root {
+  color: rgb(4, 167, 77) !important;
+}
