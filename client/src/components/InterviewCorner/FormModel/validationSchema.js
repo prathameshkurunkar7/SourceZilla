@@ -16,7 +16,7 @@ export default [
       .required(`${passoutYear.requiredErrorMsg}`)
       .test('passoutYear', passoutYear.invalidErrorMsg, val => {
         if (val) {
-          const startDate = new Date();
+          const startDate = new Date(1990, 12, 31);
           const endDate = new Date(2050, 12, 31);
           if (moment(val, moment.ISO_8601).isValid()) {
             return moment(val).isBetween(startDate, endDate);

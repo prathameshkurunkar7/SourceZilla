@@ -3,9 +3,9 @@ import { ImageIcon, VideoIcon, DocxIcon, CodeIcon, PdfIcon } from './../Componen
 import { Box, Grid } from '@material-ui/core'
 import ModalImage from "react-modal-image";
 
-const ImageTypes = ['png', 'jpg', 'jpeg']
-const DocumentTypes = ['docx']
-const ApplicationTypes = ['pdf']
+const ImageTypes = ['png', 'jpg', 'jpeg', 'PNG', 'JPEG', 'JPEG']
+const DocumentTypes = ['docx', 'DOCX']
+const ApplicationTypes = ['pdf', 'PDF']
 
 function Files({ file }) {
     const [selected, setSelected] = useState(false)

@@ -36,6 +36,12 @@ function InterviewCorner({ getAllCompanies, companies, userId }) {
 
     useEffect(() => {
         getAllCompanies()
+        return () => {
+            dispatch({
+                type: 'GET_ALL_COMPANIES',
+                payload: { companies: [] }
+            })
+        }
     }, [getAllCompanies])
 
     const [open, setOpen] = React.useState(false);

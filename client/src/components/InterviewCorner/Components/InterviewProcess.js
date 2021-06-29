@@ -90,11 +90,11 @@ function InterviewProcess({ rounds }) {
                                 <AccordionDetails>
                                     <Box>
                                         <Chip style={{ marginBottom: 10, color: '#05A44B' }} size="small" label="Description" variant="outlined" />
-                                        <Typography color="textPrimary" variant="subtitle2" gutterBottom>
+                                        <Typography variant="body2">
                                             {currRound.description}
                                         </Typography>
                                         <Chip style={{ margin: '15px 0 10px 0', color: '#05A44B' }} size="small" label="Tips" variant="outlined" />
-                                        <Typography>
+                                        <Typography variant="body2">
                                             {currRound.tips}
                                         </Typography>
                                     </Box>
