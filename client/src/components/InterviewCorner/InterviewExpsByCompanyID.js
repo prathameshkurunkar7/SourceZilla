@@ -10,7 +10,8 @@ import {
     Button,
     Box,
     FormControl,
-    InputLabel
+    InputLabel,
+    CircularProgress
 } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import Select from '@material-ui/core/Select';
@@ -36,64 +37,72 @@ function InterviewExpsByCompanyID({ interviews, ...props }) {
     return (
         <Wrapper>
             <Container>
-                <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <Box>
-                        <Typography color="textPrimary" variant="h4" gutterBottom>
-                            {String(companyName).toUpperCase()}
-                        </Typography>
-                    </Box>
-                    <Button
-                        style={{ background: 'linear-gradient(to right, rgb(4, 167, 77), #078633)', color: 'white' }}
-                        disableElevation
-                        component={NavLink}
-                        to={`/interviewcorner/${companyId}`}
-                        variant="contained"
-                    >
-                        Share Your Experience
-                    </Button>
-                </Box>
-
-                <Grid container spacing={3}>
-                    <Grid item lg={9} md={10} xs={12}>
-                        <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <Typography variant="h6" gutterBottom >
-                                {String('💰 Interview Experiences').toUpperCase()}
-                            </Typography>
-                            <FormControl variant="outlined" style={{ minWidth: 135 }} >
-                                <InputLabel id="demo-simple-select-outlined-label">Sort By</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-outlined-label"
-                                    id="demo-simple-select-outlined"
-                                    label="Sort By"
-                                    onChange={(e) => dispatch(sortby(e.target.value))}
-                                >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value="views">Views</MenuItem>
-                                    <MenuItem value="upvotes">Upvotes</MenuItem>
-                                    <MenuItem value="comments">Comments</MenuItem>
-                                </Select>
-                            </FormControl>
+                {interviews.length ? (
+                    <>
+                        <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <Box>
+                                <Typography color="textPrimary" variant="h4" gutterBottom>
+                                    {String(companyName).toUpperCase()}
+                                </Typography>
+                            </Box>
+                            <Button
+                                style={{ background: 'linear-gradient(to right, rgb(4, 167, 77), #078633)', color: 'white' }}
+                                disableElevation
+                                component={NavLink}
+                                to={`/interviewcorner/${companyId}`}
+                                variant="contained"
+                            >
+                                Share Your Experience
+                            </Button>
                         </Box>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={3}>
-                    {interviews && interviews.length !== 0 && interviews.map((interview, index) => {
-                        return (
-                            !interview.spamFlag &&
-                            <Grid key={index} item lg={9} md={10} xs={12} >
-                                <CardView companyId={companyId} companyName={companyName} interview={interview} />
+
+                        <Grid container spacing={3}>
+                            <Grid item lg={9} md={10} xs={12}>
+                                <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                    <Typography variant="h6" gutterBottom >
+                                        {String('💰 Interview Experiences').toUpperCase()}
+                                    </Typography>
+                                    <FormControl variant="outlined" style={{ minWidth: 135 }} >
+                                        <InputLabel id="demo-simple-select-outlined-label">Sort By</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-outlined-label"
+                                            id="demo-simple-select-outlined"
+                                            label="Sort By"
+                                            onChange={(e) => dispatch(sortby(e.target.value))}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            <MenuItem value="views">Views</MenuItem>
+                                            <MenuItem value="upvotes">Upvotes</MenuItem>
+                                            <MenuItem value="comments">Comments</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
                             </Grid>
-                        )
-                    })}
-                    <Grid item lg={9} md={10} xs={12}>
-                        {interviews && interviews.length !== 0 &&
-                            <Box style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Paginate companyName={companyName} companyId={companyId} page={page} />
-                            </Box>}
-                    </Grid>
-                </Grid>
+                        </Grid>
+                        <Grid container spacing={3}>
+                            {interviews && interviews.length !== 0 && interviews.map((interview, index) => {
+                                return (
+                                    !interview.spamFlag &&
+                                    <Grid key={index} item lg={9} md={10} xs={12} >
+                                        <CardView companyId={companyId} companyName={companyName} interview={interview} />
+                                    </Grid>
+                                )
+                            })}
+                            <Grid item lg={9} md={10} xs={12}>
+                                {interviews && interviews.length !== 0 &&
+                                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <Paginate companyName={companyName} companyId={companyId} page={page} />
+                                    </Box>}
+                            </Grid>
+                        </Grid>
+                    </>
+                ) : (
+                    <Box mt={35} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <CircularProgress size={35} style={{ color: '#04A44B' }} />
+                    </Box>
+                )}
             </Container>
         </Wrapper >
     )

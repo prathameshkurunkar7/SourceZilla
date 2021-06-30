@@ -63,10 +63,10 @@ class App extends Component {
 
             <Route exact path="/explore/" component={Explore} />
 
-            <Route exact path="/interviewcorner/:companyId/" component={(props) => <InterviewExp {...props} />} />
-            <Route exact path="/companies/" component={(props) => <CompaniesList {...props} />} />
-            <Route exact path="/interviews/:companyName/:companyId/" component={(props) => <InterviewExpsByCompanyID {...props} />} />
-            <Route exact path="/interview/:companyName/:companyId/:interviewId/" component={(props) => <InterviewShow {...props} />} />
+            <ProtectedRoute exact path="/interviewcorner/:companyId/" component={(props) => <InterviewExp {...props} />} />
+            <ProtectedRoute exact path="/companies/" component={(props) => <CompaniesList {...props} />} />
+            <ProtectedRoute exact path="/interviews/:companyName/:companyId/" component={(props) => <InterviewExpsByCompanyID {...props} />} />
+            <ProtectedRoute exact path="/interview/:companyName/:companyId/:interviewId/" component={(props) => <InterviewShow {...props} />} />
 
             <AdminAuth exact path="/admin/" component={(props) => <Admin {...props} />} />
             <AdminAuth exact path="/admin/userscoll/" component={(props) => <UsersCollection {...props} />} />

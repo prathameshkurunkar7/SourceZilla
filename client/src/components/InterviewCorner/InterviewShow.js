@@ -1,4 +1,4 @@
-import { Container, Grid, Typography, Box, IconButton, Tooltip } from '@material-ui/core'
+import { Container, Grid, Typography, Box, IconButton, Tooltip, CircularProgress } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import Wrapper from './Components/Wrapper'
 import ProfileCard from './Components/profileCard'
@@ -40,7 +40,7 @@ function InterviewShow(props) {
     return (
         <Wrapper>
             <Container>
-                {interview.length !== 0 ? (
+                {interview?.comments?.length ? (
                     <Grid container justify="flex-start" spacing={2}>
                         <Grid item lg={6} md={12}>
                             <Typography variant="h5" gutterBottom>
@@ -133,7 +133,11 @@ function InterviewShow(props) {
                             </Grid>
                         </Grid>
                     </Grid>
-                ) : <h1>Loading...</h1>}
+                ) : (
+                    <Box mt={35} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <CircularProgress size={35} style={{ color: '#04A44B' }} />
+                    </Box>
+                )}
             </Container>
         </Wrapper>
     )
