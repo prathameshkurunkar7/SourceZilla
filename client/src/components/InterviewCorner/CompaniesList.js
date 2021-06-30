@@ -1,4 +1,4 @@
-import { Grid, Typography, Card, CardContent, Container, makeStyles, Button, Box, IconButton, Fade } from '@material-ui/core'
+import { Grid, Typography, Card, CardContent, Container, makeStyles, Button, Box, IconButton, Fade, CircularProgress } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -51,58 +51,66 @@ function InterviewCorner({ getAllCompanies, companies, userId }) {
     return (
         <Wrapper>
             <Container>
-                <Box className={classes.searchBar}>
-                    <SearchBar
-                        onChange={(newValue) => setSearch(newValue)}
-                        onRequestSearch={() => dispatch(searchCompany(search))}
-                        onCancelSearch={() => {
-                            dispatch(searchCompany(""))
-                            setSearch("")
-                        }}
-                        value={search}
-                        placeholder="Search Company...."
-                    />
-                </Box>
-                <Button
-                    onClick={handleClickOpen}
-                    disableElevation
-                    disableFocusRipple
-                    variant="contained"
-                    className={classes.button}
-                >
-                    ADD NEW COMPANY
-                </Button>
-                <Grid container spacing={3}>
-                    {companies.length > 0 && companies.map(({ companyName, _id, spamFlag, reports }, index) => {
-                        return (
-                            spamFlag === false &&
-                            <Grid key={index} item lg={2} md={2} sm={3} xs={6} >
-                                <Fade in timeout={300} >
-                                    <Card elevation={0} className={classes.cardItem}>
-                                        <CardContent >
-                                            <Box>
-                                                {reports.includes(userId) ? (
-                                                    <IconButton onClick={() => dispatch(reportCompany(_id, userId))} style={{ padding: 0 }}>
-                                                        <FlagIcon fontSize="small" style={{ color: '#04A54B' }} />
-                                                    </IconButton>
-                                                ) : (
-                                                    <IconButton onClick={() => dispatch(reportCompany(_id, userId))} style={{ padding: 0 }}>
-                                                        <FlagOutlinedIcon fontSize="small" color="action" />
-                                                    </IconButton>
-                                                )}
-                                            </Box>
-                                            <Box style={{ display: 'flex', justifyContent: 'center' }}>
-                                                <Typography component={NavLink} to={`/interviews/${companyName}/${_id}`} color="textSecondary" variant="body1">
-                                                    {companyName.toUpperCase()}
-                                                </Typography>
-                                            </Box>
-                                        </CardContent>
-                                    </Card>
-                                </Fade>
-                            </Grid>
-                        )
-                    })}
-                </Grid>
+                {companies.length ? (
+                    <>
+                        <Box className={classes.searchBar}>
+                            <SearchBar
+                                onChange={(newValue) => setSearch(newValue)}
+                                onRequestSearch={() => dispatch(searchCompany(search))}
+                                onCancelSearch={() => {
+                                    dispatch(searchCompany(""))
+                                    setSearch("")
+                                }}
+                                value={search}
+                                placeholder="Search Company...."
+                            />
+                        </Box>
+                        <Button
+                            onClick={handleClickOpen}
+                            disableElevation
+                            disableFocusRipple
+                            variant="contained"
+                            className={classes.button}
+                        >
+                            ADD NEW COMPANY
+                        </Button>
+                        <Grid container spacing={3}>
+                            {companies.length > 0 && companies.map(({ companyName, _id, spamFlag, reports }, index) => {
+                                return (
+                                    spamFlag === false &&
+                                    <Grid key={index} item lg={2} md={2} sm={3} xs={6} >
+                                        <Fade in timeout={300} >
+                                            <Card elevation={0} className={classes.cardItem}>
+                                                <CardContent >
+                                                    <Box>
+                                                        {reports.includes(userId) ? (
+                                                            <IconButton onClick={() => dispatch(reportCompany(_id, userId))} style={{ padding: 0 }}>
+                                                                <FlagIcon fontSize="small" style={{ color: '#04A54B' }} />
+                                                            </IconButton>
+                                                        ) : (
+                                                            <IconButton onClick={() => dispatch(reportCompany(_id, userId))} style={{ padding: 0 }}>
+                                                                <FlagOutlinedIcon fontSize="small" color="action" />
+                                                            </IconButton>
+                                                        )}
+                                                    </Box>
+                                                    <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                                                        <Typography component={NavLink} to={`/interviews/${companyName}/${_id}`} color="textSecondary" variant="body1">
+                                                            {companyName.toUpperCase()}
+                                                        </Typography>
+                                                    </Box>
+                                                </CardContent>
+                                            </Card>
+                                        </Fade>
+                                    </Grid>
+                                )
+                            })}
+                        </Grid>
+                    </>
+                ) : (
+                    <Box mt={35} style={{ display: 'flex', justifyContent: 'center' }}>
+                        <CircularProgress size={35} style={{ color: '#04A44B' }} />
+                    </Box>
+                )}
             </Container>
             <Dialog setOpen={setOpen} open={open} handleClickOpen={handleClickOpen} handleClose={handleClose} />
         </Wrapper>
