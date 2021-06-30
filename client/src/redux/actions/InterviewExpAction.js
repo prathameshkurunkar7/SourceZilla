@@ -32,10 +32,12 @@ export const addCompany = (companyName) => {
     }
 }
 
-export const getAllinterviews = (companyID, page) => {
+export const getAllinterviews = (companyID, page = 1) => {
     return (dispatch) => {
+        dispatch({ type: 'LOADING_STATE', payload: { isLoading: true } })
         Axios.get(`/experience/all/${companyID}/${page}`)
             .then(({ data: { experiences, currPage, numOfPages } }) => {
+                dispatch({ type: 'LOADING_STATE', payload: { isLoading: false } })
                 dispatch({
                     type: 'GET_ALL_INTERVIEWS',
                     payload: { experiences, currPage, numOfPages }
@@ -47,9 +49,11 @@ export const getAllinterviews = (companyID, page) => {
 
 export const getInterview = (interviewId) => {
     return (dispatch) => {
+        dispatch({ type: 'LOADING_STATE', payload: { isLoading: true } })
         console.log(interviewId)
         Axios.get(`/experience/getExperience/${interviewId}`)
             .then(({ data: { experienceDetails } }) => {
+                dispatch({ type: 'LOADING_STATE', payload: { isLoading: false } })
                 dispatch({
                     type: 'GET_INTERVIEW',
                     payload: { interview: experienceDetails }

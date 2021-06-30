@@ -72,7 +72,7 @@ function CommentBox({ comments, experienceId }) {
                                     <ListItemAvatar>
                                         <Avatar
                                             alt={comment.commentBy}
-                                            src={`/experience/file/${comment.CommentByProfileImage}`}
+                                            src={`/experience/file/${comment.profileImage}`}
                                         />
                                     </ListItemAvatar>
                                     <ListItemText

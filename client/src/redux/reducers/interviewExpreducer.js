@@ -1,15 +1,21 @@
 const initialState = {
     companies: [],
-    interviews: [],
+    interviews: null,
     currPage: 0,
     numOfPages: 0,
-    interview: {},
+    interview: null,
     keyword: '',
-    sortby: ''
+    sortby: '',
+    isLoading: false
 }
 
 const interviewExpreducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'LOADING_STATE':
+            return {
+                ...state,
+                isLoading: action.payload.isLoading
+            }
         case 'GET_ALL_COMPANIES':
             return {
                 ...state,
@@ -28,7 +34,7 @@ const interviewExpreducer = (state = initialState, action) => {
                 ...state,
                 interviews: action.payload.experiences,
                 currPage: action.payload.currPage,
-                numOfPages: action.payload.numOfPages
+                numOfPages: action.payload.numOfPages,
             }
         case 'SEARCH_COMPANY':
             return {

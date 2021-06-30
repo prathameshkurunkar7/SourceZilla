@@ -40,7 +40,7 @@ function InterviewShow(props) {
     return (
         <Wrapper>
             <Container>
-                {interview?.comments?.length ? (
+                {interview ? (
                     <Grid container justify="flex-start" spacing={2}>
                         <Grid item lg={6} md={12}>
                             <Typography variant="h5" gutterBottom>

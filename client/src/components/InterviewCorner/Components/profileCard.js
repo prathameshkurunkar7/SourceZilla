@@ -31,12 +31,12 @@ function ProfileCard({ interview }) {
                 <Box className={classes.profileLinear}>
                     <Box className={classes.avatarWrapper}>
                         <Fade in timeout={1500}>
-                            <Avatar alt={interview.UserName} src={`/experience/file/${interview.profileImage}/`} className={classes.avatar} />
+                            <Avatar alt={interview?.UserName} src={`/experience/file/${interview?.profileImage}/`} className={classes.avatar} />
                         </Fade>
                     </Box>
                     <Box style={{ display: 'flex', flexDirection: 'column' }}>
                         <Typography color="textPrimary" variant="h6" gutterBottom>
-                            {interview.UserName}
+                            {interview?.UserName}
                         </Typography>
                         <Typography color="textPrimary" variant="button" display="block" gutterBottom>
                             EDUCATION
