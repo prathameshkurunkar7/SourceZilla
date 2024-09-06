@@ -8,8 +8,8 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/jest-dom": "^6.4.3",
+    "@testing-library/react": "^10.1.0",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "framer-motion": "^2.7.7",
@@ -40,7 +40,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.1",
+    "styled-components": "^6.1.0",
     "video-react": "^0.14.1"
   },
   "scripts": {
