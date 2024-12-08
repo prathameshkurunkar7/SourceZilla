@@ -15,7 +15,7 @@
     "framer-motion": "^2.7.7",
     "jwt-decode": "^3.0.0",
     "material-ui-image": "^3.3.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "pusher-js": "^7.0.2",
     "react": "^16.13.1",
     "react-audio-player": "^0.14.0",
